@@ -1,2 +1,5 @@
-# Run python script every hour
-0 * * * * cd /app && /usr/local/bin/python __main__.py >> /proc/1/fd/1 2>/proc/1/fd/2
+# Run python script every night at 3am
+0 3 * * * /usr/local/bin/python /app/__main__.py >> /dev/stdout 2>> /dev/stderr
+
+# also run at startup if the env var RUN_AT_STARTUP is set
+@reboot if [ -n "$RUN_AT_STARTUP" ]; then /usr/local/bin/python /app/__main__.py >> /dev/stdout 2>> /dev/stderr; fi
