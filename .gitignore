@@ -1,4 +1,5 @@
 # PyCharm
+.venv
 .idea/
 __pycache__/
 config.yaml
